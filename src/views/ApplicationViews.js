@@ -20,6 +20,8 @@ import { GetData } from "../components/client/data/GetData"
 import { MyData } from "../components/client/data/MyData"
 import { DataDetails } from "../components/staff/data/DataDetails"
 import { GeneralForm } from "../components/client/GeneralForm"
+import { Checkout } from "../components/client/data/Checkout"
+import { Confirmation } from "../components/client/data/Confirmation"
 
 
 
@@ -27,47 +29,57 @@ import { GeneralForm } from "../components/client/GeneralForm"
 
 export const ApplicationViews = ({ isStaff, token, setToken, setUserId, userId, isActive }) => {
   return <Routes>
-    
+
     <Route path="/home" element={<HomePage />} />
     <Route path="/impact" element={<ImpactPage />} />
     <Route path="/us" element={<AboutUsPage />} />
     <Route path="/contactus" element={<ContactForm />} />
-    <Route path="/form/:userId/generaldata" element={<GeneralForm />} /> 
+    {token ? '' : <Route path="/dashboard/:userId" element={<Navigate to="/home" replace />} />}
+    
+    <Route path="/form/:userId/generaldata/fKn32iGHJb9b33xm@rKztH3sP0t/map/" element={<GeneralForm />} />
     <Route path="/contactus/confirmation" element={<ContactConfirmationPage />} />
     <Route path="/login" element={<Login setToken={setToken} setUserId={setUserId} />} />
     <Route path="/register" element={<Register setToken={setToken} setUserId={setUserId} />} />
     <Route element={<Authorized token={token} isActive={isActive} />}>
       {/* Add Routes here */}
       {/* <Route path="/users/:userId" element={<UserDetail />} /> */}
-      
-      {
-          isStaff === true
-            ? <>
-              <Route path="/users">
-                <Route index element={<Users />} />
-                {/* <Route path=":userId" element={<UserDetail />} />
-                <Route path=":userId/edit" element={<UserEdit />} /> */}
-              </Route>
-              <Route path="/dashboard/:userId" element={<StaffDash />} />
-              <Route path="/consultations/:userId" element={<ConsultList />} />
-              <Route path="/contacts/:userId" element={<ContactList />} />
-              <Route path="/datasets/:userId" element={<DataSetList />} />
-              <Route path="/datadetails/:userId" element={<DataDetails />} />
-              
-              </>
-            : <>
-              <Route path="/users" element={<Navigate to="/home" replace />} />
-              <Route path="/dashboard/:userId" element={<Dashboard />} />
-              {/* <Route path="/dashboard" element={<Navigate to="/dashboard/{userId}" replace />} /> */}
-              <Route path="/consultation" element={<ConsultForm />} />
-              <Route path="/consultation/:userId" element={<ConsultForm />} />
-              <Route path="/consultation/:requestId/confirmation" element={<ConsultConfirm />} />
-              <Route path="/consultation/:requestId/edit" element={<ConsultEdit />} />
-              <Route path="/getdata/:userId" element={<GetData />} />
-              <Route path="/mydata/:userId" element={<MyData />} />
-            </>
 
-        }
+      {
+        isStaff === true
+          ? <>
+            <Route path="/users">
+              <Route index element={<Users />} />
+              {/* <Route path=":userId" element={<UserDetail />} />
+                <Route path=":userId/edit" element={<UserEdit />} /> */}
+            </Route>
+            <Route path="/dashboard/:userId" element={<StaffDash />} />
+            <Route path="/consultations/:userId" element={<ConsultList />} />
+            <Route path="/contacts/:userId" element={<ContactList />} />
+            <Route path="/datasets/:userId" element={<DataSetList />} />
+            <Route path="/datadetails/:userId" element={<DataDetails />} />
+
+          </>
+          : <>
+            <Route path="/users" element={<Navigate to="/home" replace />} />
+            <Route path="/dashboard/:userId" element={<Dashboard />} />
+
+            <Route path="/consultation">
+              {/* <Route index element={<ConsultForm />} /> */}
+              <Route path=":userId" element={<ConsultForm />} />
+              <Route path=":requestId/confirmation" element={<ConsultConfirm />} />
+              <Route path=":requestId/edit" element={<ConsultEdit />} />
+            </Route>
+
+            <Route path="/getdata">
+              <Route path=":userId" element={<GetData />} />
+              <Route path=":userId/checkout" element={<Checkout />} />
+              <Route path=":userId/confirmation" element={<Confirmation />} />
+            </Route>
+
+            <Route path="/mydata/:userId" element={<MyData />} />
+          </>
+
+      }
     </Route>
   </Routes>
 }

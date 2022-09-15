@@ -2,8 +2,7 @@ export const createContactRequest = (request) => {
     return fetch("http://localhost:8000/contactrequests", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
-            'Authorization': `Token ${localStorage.getItem('auth_token')}`
+            "Content-Type": "application/json"
         },
         body: JSON.stringify(request)
     })
@@ -26,5 +25,14 @@ export const updateContactRequest = (requestId, request) => {
             'Authorization': `Token ${localStorage.getItem('auth_token')}`
         },
         body: JSON.stringify(request)
+    })
+}
+
+export const deleteContactRequest = (requestId) => {
+    return fetch(`http://localhost:8000/contactrequests/${requestId}`, {
+        method: "DELETE",
+        headers: {
+            'Authorization': `Token ${localStorage.getItem('auth_token')}`
+        }
     })
 }

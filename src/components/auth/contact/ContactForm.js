@@ -52,6 +52,17 @@ export const ContactForm = () => {
                         </div>
 
                         <div className="field">
+                            <label htmlFor="email" className="label">Email: </label>
+                            <div className="control">
+                                <input type="text" name="email" required className="input"
+                                    placeholder="person@address.com"
+                                    value={request.email}
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+
+                        <div className="field">
                             <label htmlFor="phone_number" className="label">Phone Number: </label>
                             <div className="control">
                                 <input type="text" name="phone_number" required className="input"
@@ -76,13 +87,13 @@ export const ContactForm = () => {
                             </div>
                         </div>
                         <div className="field">
-                            <label htmlFor="category_id" className="label">Category: </label>
+                            <label htmlFor="contact_by_phone" className="label">Would you like us to contact you via phone call or email?: </label>
                             <div className="control">
                                 <div className="select">
-                                    <select name="category_id"
+                                    <select name="contact_by_phone"
                                         value={request.contact_by_phone}
                                         onChange={handleChange}>
-                                        <option value="0">Select a Method</option>
+                                        <option value="0">Select Preference</option>
                                         <option value="1">Phone</option>
                                         <option value="2">Email</option>
                                     </select>

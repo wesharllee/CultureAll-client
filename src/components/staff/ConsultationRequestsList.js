@@ -5,6 +5,7 @@ import { getAllConsultRequests, updateConsultComplete, updateConsultRequest } fr
 
 export const ConsultList = () => {
     const [requests, setRequests] = useState([])
+
     const { userId } = useParams()
     const navigate = useNavigate()
 
@@ -51,8 +52,7 @@ export const ConsultList = () => {
                                 const copy = { ...request }
                                 copy.completed = true
                                 updateConsultComplete(copy.id, copy).then(() => {
-                                    window.location.reload()
-                                })
+                                    getAllConsultRequests().then(requestsData => setRequests(requestsData))})
                             }}
                             className="button is-link">Complete
                         </button>
@@ -94,9 +94,9 @@ export const ConsultList = () => {
                             onClick={() => {
                                 const copy = { ...request }
                                 copy.completed = false
+                                
                                 updateConsultComplete(copy.id, copy).then(() => {
-                                    window.location.reload()
-                                })
+                                    getAllConsultRequests().then(requestsData => setRequests(requestsData))})
                             }}
                             className="button is-link">Incomplete
                         </button>

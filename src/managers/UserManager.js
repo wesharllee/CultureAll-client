@@ -8,9 +8,6 @@ export const getAllUsers = () => {
 
 export const getUserById = (userId) => {
     return fetch(`http://localhost:8000/users/${userId}`, {
-        headers: {
-            'Authorization': `Token ${localStorage.getItem('auth_token')}`
-        }
     })
         .then(res => res.json())
 };
@@ -27,7 +24,7 @@ export const updateUser = (id, user) => {
 }
 
 export const updateUserTerms = (userId, userData) => {
-    return fetch(`http://localhost:8000/users/${userId}/cchange_terms_status`, {
+    return fetch(`http://localhost:8000/users/${userId}/change_terms_status`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
+import { createAnswer, getAllAnswers } from "../../managers/AnswerManager"
 import { getAllQuestions, getQuestionById } from "../../managers/QuestionManager"
 import { getAllUsers, getUserById } from "../../managers/UserManager"
 import { Users } from "../staff/users/UserList"
@@ -7,7 +8,10 @@ import { Users } from "../staff/users/UserList"
 export const GeneralForm = () => {
     const [questions, setQuestions] = useState([])
     const [cultUser, setCultUser] = useState({})
+    // const [answers, setAnswers] = useState({})
+    // const [answer, setAnswer] = useState({})
     const { userId } = useParams()
+    const navigate = useNavigate()
 
     useEffect(() => {
         getAllQuestions().then(data => setQuestions(data))
@@ -20,11 +24,24 @@ export const GeneralForm = () => {
         )
     }, [userId])
 
-    const handleChange = (evt) => {
-        questionWithNewAnswer = {...question}
-        newAnswer[evt.target.name] = evt.target.value
+    // useEffect(() => {
+    //     getAllAnswers().then(data => setAnswers(data))
+    // }, [])
 
+    const handleChange = (questionId, evt) => {
+        const newAnswer = {
+            question: questionId,
+            rating_value: evt.target.value,
+            cult_user: cultUser.id
+        }
+        // setAnswer(newAnswer)
+        createAnswer(newAnswer)
+        //answers are in an array inside of questions array... 
+        //I need to figure out how to add to the array and access the data to coincide with correct user/company
     }
+
+
+
 
     return <section className="section">
         <article className="panel is-info">
@@ -40,18 +57,17 @@ export const GeneralForm = () => {
                         <div className="panel-block">
                             {question.question_text}
                         </div>
-                        {/* {question.answer} */}
+
                         <div className="control">
                             <div className="select">
                                 <select name="rating_value"
-                                    value={question.answers.rating_value}
-                                    onChange={handleChange}>
-                                    <option value="0">Select One</option>
-                                    <option value="5">completely agree</option>
-                                    <option value="4">agree Somewhat</option>
+                                    onChange={(evt) => handleChange(question.id, evt)}>
+                                    <option value="">Select One</option>
+                                    <option value="5">strongly agree</option>
+                                    <option value="4">somewhat agree</option>
                                     <option value="3">neither agree nor disagree</option>
-                                    <option value="2">disagree somewhat</option>
-                                    <option value="1">completely disagree</option>
+                                    <option value="2">somewhat disagree</option>
+                                    <option value="1">strongly disagree</option>
                                 </select>
                             </div>
                         </div>
@@ -67,6 +83,21 @@ export const GeneralForm = () => {
             <div className="panel-block">
 
             </div>
+            {/* <div className="field">
+                <div className="control">
+                    <button type="submit"
+                        onClick={navigate("/home")}
+                        className="button is-success">
+                        Send
+                    </button>
+                </div>
+            </div> */}
+            <button type="home"
+                onClick={() => {
+                    navigate(`/dashboard/${userId}`)
+                }}
+                className="button is-success">Home
+            </button>
         </article>
-    </section>
+    </section >
 }

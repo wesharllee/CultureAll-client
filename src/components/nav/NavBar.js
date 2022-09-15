@@ -46,7 +46,7 @@ export const NavBar = ({ isStaff, token, setToken }) => {
                     <Link to={`/dashboard/${userId}`} className="navbar-item">dashboard</Link>
                     <Link to={`/mydata/${userId}`} className="navbar-item">my data</Link>
                     <Link to={`/getdata/${userId}`} className="navbar-item">get data</Link>
-                    <Link to={"/consultation"} className="navbar-item">consultation</Link>
+                    <Link to={`/consultation/${userId}`} className="navbar-item">consultation</Link>
                     <Link to={"/home"} className="navbar-item">home</Link>
                     
                     </>

@@ -8,7 +8,8 @@ export const Register = ({ setToken, setUserId }) => {
   const lastName = useRef()
   const email = useRef()
   const username = useRef()
-  const bio = useRef()
+  const company_name = useRef()
+  const phone_number = useRef()
   const password = useRef()
   const verifyPassword = useRef()
   const passwordDialog = useRef()
@@ -23,9 +24,9 @@ export const Register = ({ setToken, setUserId }) => {
         first_name: firstName.current.value,
         last_name: lastName.current.value,
         email: email.current.value,
+        company_name: company_name.current.value,
+        phone_number: phone_number.current.value,
         password: password.current.value,
-        bio: bio.current.value,
-        profile_image_url: ""
       }
 
       registerUser(newUser)
@@ -35,7 +36,7 @@ export const Register = ({ setToken, setUserId }) => {
             localStorage.setItem('is_active', res.is_active)
             setToken(res.token)
             setUserId(res.user_id)
-            navigate("/posts")
+            navigate(`home`)
           }
         })
     } else {
@@ -70,9 +71,23 @@ export const Register = ({ setToken, setUserId }) => {
         </div>
 
         <div className="field">
+          <label className="label">Company Name</label>
+          <div className="control">
+            <input className="input" type="company_name" ref={company_name} />
+          </div>
+        </div>
+
+        <div className="field">
           <label className="label">Email</label>
           <div className="control">
             <input className="input" type="email" ref={email} />
+          </div>
+        </div>
+
+        <div className="field">
+          <label className="label">Phone Number</label>
+          <div className="control">
+            <input className="input" type="phone_number" ref={phone_number} />
           </div>
         </div>
 
@@ -93,12 +108,6 @@ export const Register = ({ setToken, setUserId }) => {
           </div>
         </div>
 
-        <div className="field">
-          <label className="label">Bio</label>
-          <div className="control">
-            <textarea className="textarea" placeholder="Tell us about yourself..." ref={bio}></textarea>
-          </div>
-        </div>
 
         <div className="field is-grouped">
           <div className="control">
