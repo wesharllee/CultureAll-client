@@ -26,6 +26,18 @@ export const updateUser = (id, user) => {
     })
 }
 
+export const updateUserTerms = (userId, userData) => {
+    return fetch(`http://localhost:8000/users/${userId}/cchange_terms_status`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Token ${localStorage.getItem('auth_token')}`
+        },
+        body: JSON.stringify(userData)
+    })
+}
+
+
 // export const updateUserActive = (id, user) => {
 //     return fetch(`http://localhost:8000/users/${id}/change_active_status`, {
 //         method: "PUT",

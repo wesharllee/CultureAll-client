@@ -38,16 +38,17 @@ export const NavBar = ({ isStaff, token, setToken }) => {
                     ?<>
                     <Link to="/users" className="navbar-item">users</Link>
                     <Link to={`/dashboard/${userId}`} className="navbar-item">dashboard</Link>
-                    <Link to={"/consultations"} className="navbar-item">consultations</Link>
-                    <Link to={"/contacts"} className="navbar-item">contacts</Link>
-                    <Link to={"/datasets"} className="navbar-item">data</Link>
+                    <Link to={`/consultations/${userId}`} className="navbar-item">consultations</Link>
+                    <Link to={`/contacts/${userId}`} className="navbar-item">contacts</Link>
+                    <Link to={`/datasets/${userId}`} className="navbar-item">data</Link>
                     </>
                     : <>
                     <Link to={`/dashboard/${userId}`} className="navbar-item">dashboard</Link>
-                    <Link to={"/mydata"} className="navbar-item">my data</Link>
-                    <Link to={"/getdata"} className="navbar-item">get data</Link>
+                    <Link to={`/mydata/${userId}`} className="navbar-item">my data</Link>
+                    <Link to={`/getdata/${userId}`} className="navbar-item">get data</Link>
                     <Link to={"/consultation"} className="navbar-item">consultation</Link>
                     <Link to={"/home"} className="navbar-item">home</Link>
+                    
                     </>
                   }     
               </>

@@ -99,7 +99,7 @@ export const ConsultEdit = () => {
                                     className="button is-link">
                                     Submit 
                                 </button>
-                                <button type="submit"
+                                <button type="cancel"
                                     onClick={() => {navigate(`/consultation/${requestId}/confirmation`)}}
                                     className="button is-link">
                                     Cancel 

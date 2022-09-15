@@ -47,3 +47,14 @@ export const deleteConsultRequest = (requestId) => {
         }
     })
 }
+
+export const updateConsultComplete = (requestId, request) => {
+    return fetch(`http://localhost:8000/consultationrequests/${requestId}/change_completed_status`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            'Authorization': `Token ${localStorage.getItem('auth_token')}`
+        },
+        body: JSON.stringify(request)
+    })
+}

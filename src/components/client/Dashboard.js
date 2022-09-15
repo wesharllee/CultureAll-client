@@ -18,10 +18,10 @@ export const Dashboard = () => {
                     </p>    
 
                     <div className="panel-block">
-                        <Link to="/mydata" className="impact-link">My Data</Link>
+                        <Link to={`/mydata/${userId}`} className="impact-link">My Data</Link>
                     </div>
                     <div className="panel-block">
-                        <Link to="/getdata" className="impact-link">Get Data</Link>
+                        <Link to={`/getdata/${userId}`} className="impact-link">Get Data</Link>
                     </div>
                     <div className="panel-block">
                         <Link to={`/consultation/${userId}`} className="impact-link">Book Consultation</Link>

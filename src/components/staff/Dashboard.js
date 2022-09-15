@@ -18,13 +18,13 @@ export const StaffDash = () => {
                     </p>    
 
                     <div className="panel-block">
-                        <Link to="/consultations" className="impact-link">Consultation Requests</Link>
+                        <Link to={`/consultations/${userId}`} className="impact-link">Consultation Requests</Link>
                     </div>
                     <div className="panel-block">
-                        <Link to="/contacts" className="impact-link">Contact Requests</Link>
+                        <Link to={`/contacts/${userId}`} className="impact-link">Contact Requests</Link>
                     </div>
                     <div className="panel-block">
-                        <Link to={`/datasets`} className="impact-link">Data Sets</Link>
+                        <Link to={`/datasets/${userId}`} className="impact-link">Data Sets</Link>
                     </div>
                 </article>        
     </section>

@@ -10,7 +10,7 @@ export const ConsultConfirm = () => {
     useEffect(() => {
         getConsultRequestById(requestId).then(
             requestData => setRequest(requestData)
-            )
+        )
     }, [requestId])
 
     let name = request?.cult_user?.user?.first_name
@@ -19,13 +19,13 @@ export const ConsultConfirm = () => {
     let address = request?.address
     let inPerson = request.in_person ? `at ${address}` : "online"
     let userId = localStorage.getItem("user_id")
-    
+
 
     return <section className="section">
         <article className="panel is-info">
             <p className="panel-heading">
-                Thanks {name}    
-            </p>    
+                Thanks {name}
+            </p>
 
             <div className="panel-block">
                 You have requested a meeting on {date} at {time} {inPerson}
@@ -38,21 +38,21 @@ export const ConsultConfirm = () => {
                     navigate(`/consultation/${requestId}/edit`)
                 }}
                 className="button is-link">Edit
-                </button>
-            <button type="delete"
-            onClick={() => {
-                deleteConsultRequest(requestId).then(() => {
-                    navigate(`/dashboard/${userId}`)
-                })
-            }}
-            className="button is-link">Delete
             </button>
-        </article>   
+            <button type="delete"
+                onClick={() => {
+                    deleteConsultRequest(requestId).then(() => {
+                        navigate(`/dashboard/${userId}`)
+                    })
+                }}
+                className="button is-link">Delete
+            </button>
+        </article>
         <button type="submit"
             onClick={() => {
-                    navigate(`/dashboard/${userId}`)
-            }} 
+                navigate(`/dashboard/${userId}`)
+            }}
             className="button is-success">Dashboard
-        </button>        
+        </button>
     </section>
 }
