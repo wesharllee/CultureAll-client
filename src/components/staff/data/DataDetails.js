@@ -5,7 +5,7 @@ export const DataDetails = () => {
 
     const { userId } = useParams()
     const [cultUser, setCultUser] = useState({})
-    const [isShown, setIsShown] = useState()
+
     const navigate = useNavigate()
 
 
@@ -75,15 +75,7 @@ export const DataDetails = () => {
         return avgAnswer
     }
 
-    const handleShow = (question) => {
-        question.isShown = true
-        setIsShown(true)
-    }
-
-    const handleHide = (question) => {
-        question.isShown = false
-        setIsShown(false)
-    }
+    
     return <section className="section">
         <article className="panel is-info">
             <p className="panel-heading">
@@ -98,7 +90,7 @@ export const DataDetails = () => {
                         let questions = questionType.questions
                         let questionTypeAverage = getQuestionTypeAverages(questionType)
                         return <div>
-                            Data Set: {type} || Average Score: {questionTypeAverage}
+                            Data Set: {type} || Average Score: {questionTypeAverage % 1 != 0 ? questionTypeAverage.toFixed(2) : questionTypeAverage}
                             {questions.map((question) => {
                                 let text = question.question_text
                                 let answers = question.answers
@@ -108,7 +100,7 @@ export const DataDetails = () => {
                                         Question: {text}
                                     </div>
                                             <div>
-                                                Average Answer: {questionAnswerAverage}
+                                                Average Answer: {questionAnswerAverage % 1 != 0 ? questionAnswerAverage.toFixed(2) : questionAnswerAverage}
                                             </div>
                                             <div>
                                                 Total Answers: {answers.length}
@@ -124,7 +116,7 @@ export const DataDetails = () => {
 
             <button type="edit"
                 onClick={() => {
-                    navigate(`/datasets`)
+                    navigate(`/datasets/${userId}`)
                 }}
                 className="button is-success">Back
             </button>

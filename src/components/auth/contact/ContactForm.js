@@ -93,9 +93,9 @@ export const ContactForm = () => {
                                     <select name="contact_by_phone"
                                         value={request.contact_by_phone}
                                         onChange={handleChange}>
-                                        <option value="0">Select Preference</option>
+                                        <option value="">Select Preference</option>
                                         <option value="1">Phone</option>
-                                        <option value="2">Email</option>
+                                        <option value="0">Email</option>
                                     </select>
                                 </div>
                             </div>

@@ -8,6 +8,7 @@ import { Users } from "../staff/users/UserList"
 export const GeneralForm = () => {
     const [questions, setQuestions] = useState([])
     const [cultUser, setCultUser] = useState({})
+    const [isShown, setIsShown] = useState()
     // const [answers, setAnswers] = useState({})
     // const [answer, setAnswer] = useState({})
     const { userId } = useParams()
@@ -40,7 +41,15 @@ export const GeneralForm = () => {
         //I need to figure out how to add to the array and access the data to coincide with correct user/company
     }
 
+    const handleShow = (question) => {
+        question.isShown = true
+        setIsShown(true)
+    }
 
+    const handleHide = (question) => {
+        question.isShown = false
+        setIsShown(false)
+    }
 
 
     return <section className="section">
