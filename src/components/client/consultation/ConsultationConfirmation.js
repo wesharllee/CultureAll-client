@@ -1,24 +1,49 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { deleteConsultRequest, getConsultRequestById } from "../../../managers/ConsultationManager"
+import { getAllUsers } from "../../../managers/UserManager"
 
 export const ConsultConfirm = () => {
     const [request, setRequest] = useState({})
     const { requestId } = useParams()
+    const [cultUsers, setCultUsers] = useState([])
+    const [cultUser, setCultUser] = useState({})
     const navigate = useNavigate()
-
+    
     useEffect(() => {
         getConsultRequestById(requestId).then(
             requestData => setRequest(requestData)
         )
     }, [requestId])
 
+
+    useEffect(() => {
+        getAllUsers().then(usersData => setCultUsers(usersData))
+    }, [])
+
+
+    let userId = parseInt(localStorage.getItem('user_id'))
+
+    const matchUsers = (userId, cultUsers) => {
+        for (let cultUser of cultUsers) {
+            if (cultUser.user.id === userId) {
+                return cultUser
+            }
+        }
+    }
+
+    useEffect(() => {
+        if (cultUsers.length) {
+            setCultUser(matchUsers(userId, cultUsers))
+        }
+    }, [cultUsers])
+
     let name = request?.cult_user?.user?.first_name
     let time = request?.readable_time
     let date = request?.readable_date
     let address = request?.address
     let inPerson = request.in_person ? `at ${address}` : "online"
-    let userId = localStorage.getItem("user_id")
+    
 
 
     return <section className="section">
@@ -42,7 +67,7 @@ export const ConsultConfirm = () => {
             <button type="delete"
                 onClick={() => {
                     deleteConsultRequest(requestId).then(() => {
-                        navigate(`/dashboard/${userId}`)
+                        navigate(`/dashboard/${cultUser.id}`)
                     })
                 }}
                 className="button is-link">Delete
@@ -50,7 +75,7 @@ export const ConsultConfirm = () => {
         </article>
         <button type="submit"
             onClick={() => {
-                navigate(`/dashboard/${userId}`)
+                navigate(`/dashboard/${cultUser.id}`)
             }}
             className="button is-success">Dashboard
         </button>

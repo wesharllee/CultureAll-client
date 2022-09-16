@@ -1,12 +1,36 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
+import { getAllUsers } from "../../managers/UserManager"
 import Logo from "./rare.jpg"
 
 export const NavBar = ({ isStaff, token, setToken }) => {
   const navigate = useNavigate()
   const navbar = useRef()
   const hamburger = useRef()
-  let userId = localStorage.getItem('user_id')
+  const [cultUsers, setCultUsers] = useState([])
+  const [cultUser, setCultUser] = useState({})
+
+  useEffect(() => {
+    getAllUsers().then(usersData => setCultUsers(usersData))
+  }, [])
+
+  
+  let userId = parseInt(localStorage.getItem('user_id'))
+
+  const matchUsers = (userId, cultUsers) => {
+    for(let cultUser of cultUsers) {
+      if (cultUser.user.id === userId) {
+        return cultUser
+      }
+    }
+  }
+  
+  useEffect(() => {
+    if(cultUsers.length){ 
+      setCultUser(matchUsers(userId, cultUsers))
+    }
+  },[cultUsers]) 
+  
 
   const showMobileNavbar = () => {
     hamburger.current.classList.toggle('is-active')
@@ -37,16 +61,16 @@ export const NavBar = ({ isStaff, token, setToken }) => {
                     isStaff
                     ?<>
                     <Link to="/users" className="navbar-item">users</Link>
-                    <Link to={`/dashboard/${userId}`} className="navbar-item">dashboard</Link>
-                    <Link to={`/consultations/${userId}`} className="navbar-item">consultations</Link>
-                    <Link to={`/contacts/${userId}`} className="navbar-item">contacts</Link>
-                    <Link to={`/datasets/${userId}`} className="navbar-item">data</Link>
+                    <Link to={`/dashboard/${cultUser.id}`} className="navbar-item">dashboard</Link>
+                    <Link to={`/consultations/${cultUser.id}`} className="navbar-item">consultations</Link>
+                    <Link to={`/contacts/${cultUser.id}`} className="navbar-item">contacts</Link>
+                    <Link to={`/datasets/${cultUser.id}`} className="navbar-item">data</Link>
                     </>
                     : <>
-                    <Link to={`/dashboard/${userId}`} className="navbar-item">dashboard</Link>
-                    <Link to={`/mydata/${userId}`} className="navbar-item">my data</Link>
-                    <Link to={`/getdata/${userId}`} className="navbar-item">get data</Link>
-                    <Link to={`/consultation/${userId}`} className="navbar-item">consultation</Link>
+                    <Link to={`/dashboard/${cultUser.id}`} className="navbar-item">dashboard</Link>
+                    <Link to={`/mydata/${cultUser.id}`} className="navbar-item">my data</Link>
+                    <Link to={`/getdata/${cultUser.id}`} className="navbar-item">get data</Link>
+                    <Link to={`/consultation/${cultUser.id}`} className="navbar-item">consultation</Link>
                     <Link to={"/home"} className="navbar-item">home</Link>
                     
                     </>

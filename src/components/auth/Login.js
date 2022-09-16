@@ -1,14 +1,20 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { loginUser } from "../../managers/AuthManager"
+import { getAllUsers } from "../../managers/UserManager"
 
 export const Login = ({ setToken, setUserId }) => {
   const username = useRef()
   const password = useRef()
   const navigate = useNavigate()
   const [isUnsuccessful, setIsUnsuccessful] = useState(false)
+  const [cultUsers, setCultUsers] = useState([])
 
-  
+
+  useEffect(() => {
+    getAllUsers().then(usersData => setCultUsers(usersData))
+  }, [])
+
 
   const handleLogin = (e) => {
     e.preventDefault()
@@ -18,13 +24,24 @@ export const Login = ({ setToken, setUserId }) => {
       password: password.current.value
     }
 
+    const matchUsers = (userId, cultUsers) => {
+      for(let cultUser of cultUsers) {
+        if (cultUser.user.id === userId) {
+          return cultUser.id
+        }
+      }
+    }
+
+
+
     loginUser(user).then(res => {
       if ("valid" in res && res.valid) {
         localStorage.setItem('is_staff', res.is_staff)
         localStorage.setItem('is_active', res.is_active)
         setToken(res.token)
         setUserId(res.user_id)
-        navigate(`/dashboard/${res.user_id}`)
+        let cultUserId = matchUsers(res.user_id, cultUsers)
+        navigate(`/dashboard/${cultUserId}`)
       }
       else {
         setIsUnsuccessful(true)

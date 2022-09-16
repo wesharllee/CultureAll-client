@@ -14,11 +14,11 @@ export const GetData = () => {
     return <section className="section">
         <article className="panel is-info">
             <p className="panel-heading">
-                Welcome
+                Hey {cultUser?.user?.first_name}!
             </p>
 
             <div className="panel-block">
-                I will give you my first born
+                In order to make {cultUser.company_name} awesome, I will  happily give you my first born.
             </div>
 
             <button type="complete"
