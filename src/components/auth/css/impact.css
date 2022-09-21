@@ -1,0 +1,136 @@
+.impact-header {
+    display: flex;
+    font-size: 85px;
+    justify-content: end;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    border-radius: .25rem;
+    min-height: 100px;
+}
+
+.impact-header-title {
+
+    /* margin-left: 1rem; */
+    background-color: rgb(146, 174, 189);
+    /* opacity: 80%; */
+    color: black;
+    /* border: 1px dashed lightblue; */
+    border-radius: 5rem;
+    padding-right: 2rem;
+    padding-left: 25rem;
+
+}
+
+.impact-point-container-a {
+    margin: 2rem;
+    margin-right: 7rem;
+    margin-bottom: 8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    border: 1px solid rgb(146, 174, 189);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 3px 3px rgb(199, 212, 211);
+}
+
+.impact-point-container-b {
+    margin: 2rem;
+    margin-left: 7rem;
+    margin-bottom: 8rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    border: 1px solid rgb(146, 174, 189);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 3px 3px rgb(199, 212, 211);
+}
+
+.impact-point {
+    margin: 1.5rem;
+    font-size: 2rem;
+    font-family: "slabo";
+}
+
+.about-impact-point {
+    margin: 1rem;
+    margin-left: 3rem;
+    font-size: 1.5rem;
+}
+
+.impact-circle-img {
+    display: flex;
+    font-size: 85px;
+    justify-content: right;
+    align-items: center;
+    border-radius: 15rem;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.impact-home-box {
+    display: flex;
+    flex-direction: column;
+    font-size: 80px;
+    justify-content: start;
+    align-items: center;
+    /* background-color: rgb(146, 174, 189); */
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    border-radius: .25rem;
+    min-height: 300px;
+}
+
+.impact-home-buttonz {
+    margin-bottom: 4rem;
+    background: #fff;
+    border-color: #fff;
+    border-style: solid;
+    background-color: whitesmoke;
+    color: rgb(81, 98, 106);
+    padding-left: 2rem; 
+    padding-right: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size: large;
+    /* border-radius: 1rem; */
+    border-color: beige;
+    box-shadow: 0px 0px 0px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all .5s;
+}
+
+.impact-home-buttonz:before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    /* background: wheat; */
+    /* color: aliceblue; */
+    transition: all .5s;
+    z-index: -1;
+}
+
+
+.impact-home-buttonz:hover {
+    color: whitesmoke;
+    background: rgb(146, 174, 189);
+}
+
+.impact-home-buttonz:hover:before {
+    top: 0;
+    left: 0;
+}

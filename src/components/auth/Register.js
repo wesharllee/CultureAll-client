@@ -2,6 +2,7 @@ import { useRef } from "react"
 import { Link } from "react-router-dom"
 import { useNavigate } from "react-router-dom"
 import { registerUser } from "../../managers/AuthManager"
+import "./css/register.css"
 
 export const Register = ({ setToken, setUserId }) => {
   const firstName = useRef()
@@ -45,9 +46,9 @@ export const Register = ({ setToken, setUserId }) => {
   }
 
   return (
-    <section className="columns is-centered">
+    <section className="register-form-container">
       <form className="column is-two-thirds" onSubmit={handleRegister}>
-        <h1 className="title">Culture All</h1>
+        {/* <h1 className="register-title">Culture All</h1> */}
         <p className="subtitle">Create an account</p>
         <div className="field">
           <label className="label">First Name</label>
@@ -109,13 +110,14 @@ export const Register = ({ setToken, setUserId }) => {
         </div>
 
 
-        <div className="field is-grouped">
-          <div className="control">
-            <button className="button is-link" type="submit">Submit</button>
-          </div>
-          <div className="control">
-            <Link to="/login" className="button is-link is-light">Cancel</Link>
-          </div>
+        <div className="register-form-button-box">
+          
+            <button className="register-form-register-buttonz" type="submit">Submit</button>
+          
+            <button className="register-form-register-buttonz" onClick={() => {
+                            navigate(`/login`)
+                        }} type="submit">Cancel</button>
+          
         </div>
 
       </form>

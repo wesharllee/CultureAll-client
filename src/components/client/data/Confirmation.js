@@ -15,26 +15,32 @@ export const Confirmation = () => {
     }, [userId])
 
     return <section className="section">
-        <article className="panel is-info">
-            <p className="panel-heading">
-                Thanks {cultUser?.user?.first_name}
-            </p>
+        <div className="data-section-container">
 
-            <div className="panel-block">
-                Get your {cultUser.company_name} data link here:
-            </div>
-            <div className="panel-block">
-                <Link to={`/form/${userId}/generaldata/fKn32iGHJb9b33xm@rKztH3sP0t/map/`} className="impact-link">General Questionnaire</Link>
-            </div>
-            
-        </article>
-        <button type="submit"
-            onClick={() => {
-                
-                    navigate(`/getdata/${userId}/confirmation`)
-                
-            }}
-            className="button is-success">Checkout
-        </button>
+
+            <article className="checkout-outer-container">
+                <p className="data-title2">
+                    Thanks {cultUser?.user?.first_name}
+                </p>
+                <div className="confirm-inner-container">
+                    <div className="data-title3">
+                        Get your {cultUser.company_name} data link here:
+                    </div>
+                    <div className="data-linkz">
+                        <Link to={`/form/${userId}/generaldata/fKn32iGHJb9b33xm@rKztH3sP0t/map/`} className="impact-link">{cultUser.company_name}'s General Questionnaire</Link>
+                    </div>
+                    <div className="panel-block">make sure to save your link!</div>
+                </div>
+
+                <button type="submit"
+                    onClick={() => {
+
+                        navigate(`/dashboard/${userId}`)
+
+                    }}
+                    className="data-agree-buttonz">Dashboard
+                </button>
+            </article>
+        </div>
     </section>
 }

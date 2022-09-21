@@ -5,21 +5,26 @@ export const ContactConfirmationPage = () => {
     const navigate = useNavigate()
 
     return <section className="section">
-        <article className="panel is-info">
-            <p className="panel-heading">
-                Thank You    
-            </p>    
-
-            <div className="panel-block">
-                We Will Contact You Within 24 Hours
+        <article className="contact-background">
+            <div className="thank-you-container">
+                <div className="contact-form-container">
+                    <p className="thank-you">
+                        Thank You
+                    </p>
+                    <div className="we-will-contact">
+                        We Will Contact You Within 24 Hours
+                    </div>
+                    <div className="contact-button-box">
+                        <button type="submit"
+                            onClick={() => {
+                                navigate(`/home`)
+                            }}
+                            className="contact-buttonz">Home
+                        </button>
+                    </div>
+                </div>
             </div>
-        </article>   
-        <button type="submit"
-            onClick={() => {
-                navigate(`/home`)
-            }} 
-            className="button is-success">Home
-        </button>        
+        </article>
     </section>
 
 }

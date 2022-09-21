@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { loginUser } from "../../managers/AuthManager"
 import { getAllUsers } from "../../managers/UserManager"
+import "./css/login.css"
 
 export const Login = ({ setToken, setUserId }) => {
   const username = useRef()
@@ -50,9 +51,9 @@ export const Login = ({ setToken, setUserId }) => {
   }
 
   return (
-    <section className="columns is-centered">
+    <section className="login-form-container">
       <form className="column is-two-thirds" onSubmit={handleLogin}>
-        <h1 className="title">Culture All</h1>
+        {/* <h1 className="title">Culture All</h1> */}
         <p className="subtitle">Please sign in</p>
 
         <div className="field">
@@ -69,13 +70,13 @@ export const Login = ({ setToken, setUserId }) => {
           </div>
         </div>
 
-        <div className="field is-grouped">
+        <div className="login-form-button-box">
           <div className="control">
-            <button className="button is-link" type="submit" >Submit</button>
+            <button className="login-form-login-buttonz" type="submit" >Submit</button>
           </div>
-          <div className="control">
-            <Link to="/register" className="button is-link is-light">Cancel</Link>
-          </div>
+          <button className="register-form-register-buttonz" onClick={() => {
+                            navigate(`/register`)
+                        }} type="submit">Cancel</button>
         </div>
         {
           isUnsuccessful ? <p className="help is-danger">Username or password not valid</p> : ''

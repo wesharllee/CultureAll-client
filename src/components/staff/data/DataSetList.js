@@ -53,6 +53,10 @@ export const DataSetList = () => {
         return avgQuestionTypeValue
     }
 
+    let getPercentage = (avg) => {
+        return avg/5 * 100
+    }
+
     return <section className="section">
         <article className="panel is-info">
             <p className="panel-heading">
@@ -64,6 +68,8 @@ export const DataSetList = () => {
                 let phoneNumber = cultUser.phone_number
                 let email = cultUser.user.email
                 let questionTypes = cultUser.question_types
+            
+                
                 if (cultUser.user.is_staff === false) {
                     return <>
                         <div>
@@ -72,10 +78,14 @@ export const DataSetList = () => {
                                 {questionTypes.map((questionType) => {
                                     let type = questionType.type
                                     let avg = getQuestionTypeAverages(questionType)
+                                    let percentage = Math.round(getPercentage(avg))
                                     return <div>
                                         Data Set: {type}
                                         <div>
-                                            Score: {avg}
+                                            Score: {avg.toFixed(2)}
+                                        </div>
+                                        <div>
+                                            Happiness Quotient: {percentage}%
                                         </div>
                                     </div>
                                 })}

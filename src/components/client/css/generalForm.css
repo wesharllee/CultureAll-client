@@ -1,0 +1,149 @@
+.general-form-header {
+    display: flex;
+    font-size: 85px;
+    justify-content: start;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    border-radius: .25rem;
+    min-height: 100px;
+}
+
+.general-form-header-title {
+
+    /* margin-left: 1rem; */
+    background-color: whitesmoke;
+    /* opacity: 80%; */
+    color: black;
+    /* border: 1px dashed lightblue; */
+    border-radius: 5rem;
+    padding-left: 2rem;
+    padding-right: 35rem;
+    margin: 2rem;
+
+}
+
+.general-form-outer-container {
+    background-color: rgb(146, 174, 189);
+    padding: 2rem;
+}
+
+.general-form-container-a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.general-form-container-b {
+    /* border: 1px dotted black; */
+    justify-content: center;
+    align-items: stretch;
+}
+
+.general-form-container-c {
+    margin: 1rem;
+    /* margin-left: 7rem;
+    margin-bottom: 8rem; */
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: stretch;
+    border: 1px solid rgb(146, 174, 189);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 3px 3px rgb(199, 212, 211);
+    max-width: 800px;
+}
+
+.general-form-point {
+    margin: 1.5rem;
+    font-size: 2rem;
+    font-family: "slabo";
+}
+
+.general-form-question {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    /* margin-left: 3rem; */
+    font-size: 1.5rem;
+    
+}
+
+.general-form-question-box {
+    text-align: left;
+}
+
+.general-form-select-box {
+    text-align: left;
+}
+
+.general-form-circle-img {
+    display: flex;
+    font-size: 85px;
+    justify-content: right;
+    align-items: center;
+    border-radius: 15rem;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.general-form-home-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    max-width: 800px;
+}
+
+.general-form-home-buttonz {
+    margin-bottom: 4rem;
+    background: #fff;
+    border-color: #fff;
+    border-style: solid;
+    border-radius: .25rem;
+    background-color: whitesmoke;
+    color: rgb(81, 98, 106);
+    padding-left: 2rem; 
+    padding-right: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size: large;
+    /* border-radius: 1rem; */
+    border-color: beige;
+    box-shadow: 0px 0px 0px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all .5s;
+}
+
+.general-form-home-buttonz:before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    /* background: wheat; */
+    /* color: aliceblue; */
+    transition: all .5s;
+    z-index: -1;
+}
+
+
+.general-form-home-buttonz:hover {
+    color: whitesmoke;
+    background: rgb(146, 174, 189);
+}
+
+.general-form-home-buttonz:hover:before {
+    top: 0;
+    left: 0;
+}

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router"
 import { createContactRequest } from "../../../managers/ContactManager"
+import "../css/contact.css"
 
 
 
@@ -25,9 +26,9 @@ export const ContactForm = () => {
 
     return (
         <section className="section">
-            <article className="panel is-info">
-                <h2 className="panel-heading">Contact Us</h2>
-                <div className="panel-block">
+            <div className="contact-background">
+            <article className="contact-form-container">
+            <div className="contact-title">Contact Us</div>
                     <form style={{ width: "100%" }}>
                         <div className="field">
                             <label htmlFor="first_name" className="label">First Name: </label>
@@ -93,25 +94,25 @@ export const ContactForm = () => {
                                     <select name="contact_by_phone"
                                         value={request.contact_by_phone}
                                         onChange={handleChange}>
-                                        <option value="0">Select Preference</option>
+                                        <option value="">Select Preference</option>
                                         <option value="1">Phone</option>
-                                        <option value="2">Email</option>
+                                        <option value="0">Email</option>
                                     </select>
                                 </div>
                             </div>
                         </div>
-                        <div className="field">
-                            <div className="control">
+                        
+                            <div className="contact-button-box">
                                 <button type="submit"
                                     onClick={handleSubmit}
-                                    className="button is-link">
+                                    className="contact-buttonz">
                                     Reach Out
                                 </button>
                             </div>
-                        </div>
+                        
                     </form>
-                </div>
             </article>
+            </div>
         </section>
     )
 }

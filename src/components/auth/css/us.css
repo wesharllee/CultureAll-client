@@ -1,0 +1,151 @@
+.us-top-bar {
+    display: flex;
+    flex-direction: column;
+    font-size: 80px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(146, 174, 189);
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    border-radius: .25rem;
+    min-height: 200px
+}
+
+.us-header {
+    display: flex;
+    font-size: 85px;
+    justify-content: left;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    border-radius: .25rem;
+    min-height: 100px;
+    /* background-color: rgb(123, 188, 148); */
+}
+
+.us-header-title {
+
+    /* margin-left: 1rem; */
+    background-color: rgb(179, 166, 191);;
+    opacity: 80%;
+    color: black;
+    /* border: 1px dashed lightblue; */
+    border-radius: 5rem;
+    padding-left: 2rem;
+    padding-right: 35rem;
+
+}
+
+.us-title1 {
+    font-size: 4rem;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border-radius: 1;
+    padding-top: 10rem;
+    padding-bottom: 5rem;
+    /* border: 1px solid goldenrod; */
+}
+
+
+.us-info-container {
+    /* width: 70%; */
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+    margin-left: 20rem;
+    margin-right: 20rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    /* border: 1px solid goldenrod; */
+    border-radius: 1rem;
+    /* padding: 2rem; */
+    /* box-shadow: 3px 3px wheat; */
+}
+
+.us-info{
+    font-size: 18px;
+}
+
+.line {
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.ghandi-quote{
+    font-style: italic;
+    text-align: center;
+    margin-top: 3rem;
+    margin-bottom: 5rem;
+}
+
+.us-home-box {
+    display: flex;
+    flex-direction: column;
+    font-size: 80px;
+    justify-content: start;
+    align-items: center;
+    background-color: rgb(146, 174, 189);
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    border-radius: .25rem;
+    min-height: 300px;
+}
+
+.us-home-title {
+    padding: 2rem;
+    color: whitesmoke;
+    /* border: 1px solid black */
+}
+
+.us-home-buttonz {
+    margin-bottom: 4rem;
+    background: #fff;
+    border-color: #fff;
+    border-style: solid;
+    background-color: whitesmoke;
+    color: rgb(89, 121, 138);
+    padding-left: 2rem; 
+    padding-right: 2rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    font-size: large;
+    /* border-radius: 1rem; */
+    border-color: beige;
+    box-shadow: 0px 0px 0px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all .5s;
+}
+
+.us-home-buttonz:before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    /* background: wheat; */
+    /* color: aliceblue; */
+    transition: all .5s;
+    z-index: -1;
+}
+
+
+.us-home-buttonz:hover {
+    color: whitesmoke;
+    background: rgb(146, 174, 189);
+}
+
+.us-home-buttonz:hover:before {
+    top: 0;
+    left: 0;
+}
