@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { createAnswer, getAllAnswers } from "../../managers/AnswerManager"
-import { getAllQuestions, getQuestionById } from "../../managers/QuestionManager"
-import { getAllUsers, getUserById } from "../../managers/UserManager"
-import { Users } from "../staff/users/UserList"
+import { createAnswer } from "../../managers/AnswerManager"
+import { getAllQuestions } from "../../managers/QuestionManager"
+import { getUserById } from "../../managers/UserManager"
+import "./css/generalForm.css"
 
 export const GeneralForm = () => {
     const [questions, setQuestions] = useState([])
     const [cultUser, setCultUser] = useState({})
     const [isShown, setIsShown] = useState()
-    // const [answers, setAnswers] = useState({})
-    // const [answer, setAnswer] = useState({})
     const { userId } = useParams()
     const navigate = useNavigate()
 
@@ -25,9 +23,6 @@ export const GeneralForm = () => {
         )
     }, [userId])
 
-    // useEffect(() => {
-    //     getAllAnswers().then(data => setAnswers(data))
-    // }, [])
 
     const handleChange = (questionId, evt) => {
         const newAnswer = {
@@ -52,61 +47,54 @@ export const GeneralForm = () => {
     }
 
 
-    return <section className="section">
-        <article className="panel is-info">
-            <h1>{cultUser.company_name}</h1>
-            {questions.map((question) => {
+    return <section className="general-form-outer-container">
 
-                return <>
-                    <p className="panel-heading">
-                        Question {question.id} of 20
-                    </p>
-                    <div className="field">
-                        <label htmlFor="rating_value" className="label">Please Rate 1 to 5</label>
-                        <div className="panel-block">
-                            {question.question_text}
-                        </div>
+        <article className="general-form-header">
+            <div className="general-form-header-title">{cultUser.company_name}</div>
+        </article>
+        <article className="general-form-container-a">
+            <div className="general-form-container-b">
+                {questions.map((question) => {
 
-                        <div className="control">
-                            <div className="select">
-                                <select name="rating_value"
-                                    onChange={(evt) => handleChange(question.id, evt)}>
-                                    <option value="">Select One</option>
-                                    <option value="5">strongly agree</option>
-                                    <option value="4">somewhat agree</option>
-                                    <option value="3">neither agree nor disagree</option>
-                                    <option value="2">somewhat disagree</option>
-                                    <option value="1">strongly disagree</option>
-                                </select>
+                    return <>
+                        <div className="general-form-container-c">
+
+
+                            <div className="field">
+                                <div className="general-form-question-box">Question {question.id} of 20</div>
+                                <div className="general-form-question">
+                                    {question.question_text}
+                                </div>
+
+                                <div className="general-form-select-box">
+                                    <div className="select">
+                                        <select name="rating_value"
+                                            onChange={(evt) => handleChange(question.id, evt)}>
+                                            <option value="">Select One</option>
+                                            <option value="5">strongly agree</option>
+                                            <option value="4">somewhat agree</option>
+                                            <option value="3">neither agree nor disagree</option>
+                                            <option value="2">somewhat disagree</option>
+                                            <option value="1">strongly disagree</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-
-                </>
+                    </>
 
 
-            })}
-            <div className="panel-block">
-
-            </div>
-            <div className="panel-block">
-
-            </div>
-            {/* <div className="field">
-                <div className="control">
-                    <button type="submit"
-                        onClick={navigate("/home")}
-                        className="button is-success">
-                        Send
+                })}
+                <div className="general-form-home-box">
+                    <button type="home"
+                        onClick={() => {
+                            navigate(`/dashboard/${userId}`)
+                        }}
+                        className="general-form-home-buttonz">Home
                     </button>
                 </div>
-            </div> */}
-            <button type="home"
-                onClick={() => {
-                    navigate(`/dashboard/${userId}`)
-                }}
-                className="button is-success">Home
-            </button>
+            </div>
         </article>
-    </section >
+
+    </section>
 }

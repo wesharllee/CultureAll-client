@@ -9,7 +9,7 @@ export const ConsultConfirm = () => {
     const [cultUsers, setCultUsers] = useState([])
     const [cultUser, setCultUser] = useState({})
     const navigate = useNavigate()
-    
+
     useEffect(() => {
         getConsultRequestById(requestId).then(
             requestData => setRequest(requestData)
@@ -42,42 +42,51 @@ export const ConsultConfirm = () => {
     let time = request?.readable_time
     let date = request?.readable_date
     let address = request?.address
-    let inPerson = request.in_person ? `at ${address}` : "online"
-    
+    let inPerson = request.in_person ? `address: ${address}` : "online"
+
 
 
     return <section className="section">
-        <article className="panel is-info">
-            <p className="panel-heading">
-                Thanks {name}
-            </p>
+        <article className="consult-background">
 
-            <div className="panel-block">
-                You have requested a meeting on {date} at {time} {inPerson}
-            </div>
-            <div className="panel-block">
-                We Will Contact You Within 24 Hours
-            </div>
-            <button type="edit"
-                onClick={() => {
-                    navigate(`/consultation/${requestId}/edit`)
-                }}
-                className="button is-link">Edit
-            </button>
-            <button type="delete"
-                onClick={() => {
-                    deleteConsultRequest(requestId).then(() => {
+                <div className="consult-confirm-container">
+                    <p className="consult-thank-you">
+                        Thanks {name}
+                    </p>
+
+                    <div className="we-will-consult">
+                        You have requested a meeting <br /> on: {date} <br />at: {time} <br /> {inPerson}
+                    </div>
+                    <div className="panel-block">
+                        We Will Contact You Within 24 Hours
+                    </div>
+
+                    <div className="consult-button-box">
+                        <button type="edit"
+                            onClick={() => {
+                                navigate(`/consultation/${requestId}/edit`)
+                            }}
+                            className="consult-buttonz">Edit
+                        </button>
+                        <button type="delete"
+                            onClick={() => {
+                                deleteConsultRequest(requestId).then(() => {
+                                    navigate(`/dashboard/${cultUser.id}`)
+                                })
+                            }}
+                            className="consult-cancel-buttonz">Delete
+                        </button>
+                    </div>
+                </div>
+            <div className="consult-bottom-button-box">
+                <button type="submit"
+                    onClick={() => {
                         navigate(`/dashboard/${cultUser.id}`)
-                    })
-                }}
-                className="button is-link">Delete
-            </button>
+                    }}
+                    className="consult-dashboard-buttonz">Dashboard
+                </button>
+            </div>
+
         </article>
-        <button type="submit"
-            onClick={() => {
-                navigate(`/dashboard/${cultUser.id}`)
-            }}
-            className="button is-success">Dashboard
-        </button>
     </section>
 }

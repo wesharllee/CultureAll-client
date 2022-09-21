@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { getAllUsers } from "../../managers/UserManager"
-import Logo from "./rare.jpg"
+import Logo from "./cult.jpg"
+import "./nav.css"
 
 export const NavBar = ({ isStaff, token, setToken }) => {
   const navigate = useNavigate()
@@ -38,7 +39,7 @@ export const NavBar = ({ isStaff, token, setToken }) => {
   }
 
   return (
-    <nav className="navbar is-success mb-3" role="navigation" aria-label="main navigation">
+    <nav className="navbar is-light" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
         <a className="navbar-item" href="/">
           <img src={Logo} height="3rem" alt="Logo" /> <h1 className="title is-4">Culture All</h1>
@@ -91,15 +92,15 @@ export const NavBar = ({ isStaff, token, setToken }) => {
               {
                 token
                   ? <>
-                  <button className="button is-outlined" onClick={() => {
+                  <button className="nav-logout-buttonz" onClick={() => {
                     setToken('')
                     navigate('/home')
                   }}>Logout</button>
                   </>
                   :
                   <>
-                    <Link to="/register" className="button is-link">Register</Link>
-                    <Link to="/login" className="button is-outlined">Login</Link>
+                    <Link to="/register" className="nav-register-buttonz">Register</Link>
+                    <Link to="/login" className="nav-login-buttonz">Login</Link>
                   </>
               }
             </div>

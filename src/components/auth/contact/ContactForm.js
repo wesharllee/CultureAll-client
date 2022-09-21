@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useNavigate } from "react-router"
 import { createContactRequest } from "../../../managers/ContactManager"
+import "../css/contact.css"
 
 
 
@@ -25,9 +26,9 @@ export const ContactForm = () => {
 
     return (
         <section className="section">
-            <article className="panel is-info">
-                <h2 className="panel-heading">Contact Us</h2>
-                <div className="panel-block">
+            <div className="contact-background">
+            <article className="contact-form-container">
+            <div className="contact-title">Contact Us</div>
                     <form style={{ width: "100%" }}>
                         <div className="field">
                             <label htmlFor="first_name" className="label">First Name: </label>
@@ -100,18 +101,18 @@ export const ContactForm = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="field">
-                            <div className="control">
+                        
+                            <div className="contact-button-box">
                                 <button type="submit"
                                     onClick={handleSubmit}
-                                    className="button is-link">
+                                    className="contact-buttonz">
                                     Reach Out
                                 </button>
                             </div>
-                        </div>
+                        
                     </form>
-                </div>
             </article>
+            </div>
         </section>
     )
 }

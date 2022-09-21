@@ -2,6 +2,9 @@ import { useEffect, useState } from "react"
 import { Link, useParams } from "react-router-dom"
 import { getUserById } from "../../../managers/UserManager"
 import { Bar } from "react-chartjs-2"
+import Chart from "chart.js/auto"
+// import "../client.css"
+
 
 export const MyData = () => {
 
@@ -62,54 +65,124 @@ export const MyData = () => {
         return avg / 5 * 100
     }
 
+    let graphColor = (percentageArray) => {
+        let graphArray = []
+        if (percentageArray > 65) {
+            graphArray.push("rgb(123, 188, 148)")
+        }
+        else if(percentageArray > 55) {
+            graphArray.push("rgb(227, 209, 152)")
+        }
+        else { graphArray.push("rgb(208, 101, 101)") }
+        return graphArray
+    }
 
 
-    return <section className="section">
-        <article className="panel is-info">
-            <p className="panel-heading">
-                {cultUser.company_name} Data:
-            </p>
+    return <section className="data-graph-section">
+        <p className="data-title1">
+            {cultUser.company_name}'s Data:
+        </p>
+        <article >
             {cultUser.terms_signed === true
                 ?
-
-                <div className="panel-block">
-
-                    <div >
+                <div className="graph-card-container">
+                    <div className="card-inner-container" >
                         {cultUser.question_types?.map((questionType) => {
                             let type = questionType.type
                             let avg = getQuestionTypeAverages(questionType)
                             let percentage = Math.round(getPercentage(avg))
                             if (percentage > 65) {
-                                return <>
-                                    <div className="panel-block">
+                                return <div className="data-inner-container-a">
+                                    <div className="data-heading">
                                         {type}
                                     </div>
-                                    <div className="panel-block">
-                                        Score: {avg % 1 != 0 ? avg.toFixed(2) : avg}
+                                    <div className="data-set-box">
+                                        <div className="data-set">
+                                            Score: {avg % 1 != 0 ? avg.toFixed(2) : avg}
+                                        </div>
+                                        <div className="data-set">
+                                            Happiness Quotient: {percentage}%
+                                        </div>
                                     </div>
-                                    <div className="panel-block">
-                                        Happiness Quotient: {percentage}%
+                                </div>
+                            }
+                            else if (percentage > 55){
+                                return <div className="data-inner-container-c">
+                                    <div className="data-heading">
+                                        {type}
                                     </div>
-                                    <div className="panel-block"></div>
-                                </>
+                                    <div className="data-set-box">
+                                        <div className="data-set">
+                                            Score: {avg.toFixed(2)}
+                                        </div>
+                                        <div className="data-set">
+                                            Happiness Quotient: {percentage}%
+                                        </div>
+                                    </div>
+                                </div>
                             }
                             else {
-                                return <>
-                                    <div className="panel-block">
+                                return <div className="data-inner-container-b">
+                                    <div className="data-heading">
                                         {type}
                                     </div>
-                                    <div className="panel-block">
-                                        Score: {avg.toFixed(2)}
+                                    <div className="data-set-box">
+                                        <div className="data-set">
+                                            Score: {avg.toFixed(2)}
+                                        </div>
+                                        <div className="data-set">
+                                            Happiness Quotient: {percentage}%
+                                        </div>
                                     </div>
-                                    <div className="panel-block">
-                                        Happiness Quotient: {percentage}% (Room for Improvement)
-                                    </div>
-                                    <div className="panel-block"></div>
-                                </>
+                                </div>
                             }
                         })}
                     </div>
+                    <div className="graph-container">
+
+                        <div className="data-title2">Happiness Quotient</div>
+                    <div className="graph-inner-container">
+                        <div className="graph" style={{ maxWidth: "1500px", minWidth: "50px" }}>
+                            <Bar
+                                data={{
+                                    
+                                    // Name of the variables on x-axies for each bar
+                                    labels: cultUser.question_types.map((questionType) => questionType.type),
+                                    datasets: [
+                                        {
+                                            // Label for bars
+                                            label: "% out of 100",
+                                            // Data or value of your each variable
+                                            data: cultUser.question_types.map((questionType) => Math.round(getPercentage(getQuestionTypeAverages(questionType)))),
+                                            // Color of each bar
+                                            backgroundColor: cultUser.question_types.map((questionType) => graphColor(getPercentage(getQuestionTypeAverages(questionType)))),
+                                            // Border color of each bar
+                                            borderColor: cultUser.question_types.map((questionType) => graphColor(getPercentage(getQuestionTypeAverages(questionType)))),
+                                            borderWidth: 0.5,
+                                        },
+                                    ],
+                                }}
+                                // Height of graph
+                                height={613}
+                                options={{
+                                    maintainAspectRatio: false,
+                                    scales: {
+                                        y: {
+                                            suggestedMin: 50,
+                                            suggestedMax: 100
+                                        }
+                                    },
+                                    legend: {
+                                        labels: {
+                                            fontSize: 15,
+                                        },
+                                    },
+                                }}
+                                />
+                        </div>
+                    </div>
                 </div>
+                                </div>
                 :
                 <>
                     <div className="panel-block">Sorry {cultUser?.user?.first_name}! You don't currently have any data.</div>
@@ -118,50 +191,7 @@ export const MyData = () => {
                 </>
             }
 
-            {/* <div className="App">
-                <h1>GEEKSFORGEEKS BAR CHART REACTJS</h1>
-                <div style={{ maxWidth: "650px" }}>
-                    <Bar
-                        data={{
-                            // Name of the variables on x-axies for each bar
-                            labels: ["1st bar", "2nd bar", "3rd bar", "4th bar"],
-                            datasets: [
-                                {
-                                    // Label for bars
-                                    label: "total count/value",
-                                    // Data or value of your each variable
-                                    data: [1552, 1319, 613, 1400],
-                                    // Color of each bar
-                                    backgroundColor: ["aqua", "green", "red", "yellow"],
-                                    // Border color of each bar
-                                    borderColor: ["aqua", "green", "red", "yellow"],
-                                    borderWidth: 0.5,
-                                },
-                            ],
-                        }}
-                        // Height of graph
-                        height={400}
-                        options={{
-                            maintainAspectRatio: false,
-                            scales: {
-                                yAxes: [
-                                    {
-                                        ticks: {
-                                            // The y-axis value will start from zero
-                                            beginAtZero: true,
-                                        },
-                                    },
-                                ],
-                            },
-                            legend: {
-                                labels: {
-                                    fontSize: 15,
-                                },
-                            },
-                        }}
-                    />
-                </div>
-            </div> */}
+
 
         </article>
     </section>

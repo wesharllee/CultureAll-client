@@ -1,48 +1,93 @@
 import { Link, useNavigate } from "react-router-dom"
+import "./css/impact.css"
 
 export const ImpactPage = () => {
 
     const navigate = useNavigate()
 
-    return <section className="section">
-        <article className="panel is-info">
-            
-            <p className="panel-heading">
-                Feedback Stuff
-            </p>
-            <div className="panel-block">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    return <>
+        <section className="section">
+            <div className="impact-header">
+                <div className="impact-header-title">
+                    What Will Your Impact Be?
+                </div>
             </div>
-            <p className="panel-heading">
-                Data and Strategy Stuff
-            </p>
-            <div className="panel-block">
-                Data and Strategy Stuff
+            <article className="impact-point-container-a">
+
+                <img className="impact-circle-img" src="https://res.cloudinary.com/wescloud/image/upload/v1663700093/Culture%20All/F7EA3CF1-D5D6-454F-8558-9C38E01B01B6_2_zzcr5k.jpg" />
+                <div className="impact-point-box">
+                    <p className="impact-point">
+                        Gather Employee Feedback
+                    </p>
+                    <div className="about-impact-point">
+                        We gather feedback through the use of our sequenced questionnaires
+                        that each cater to specific work environment factors . We guarantee
+                        anonymity to encourage employee participation and honesty. As your
+                        companies pain points become more clear, we deep dive for more
+                        specifics in each category. Once we’ve gathered your results we
+                        provide you access to your metrics in your company specific portal.
+                        You will receive a score on the overall happiness of your employees,
+                        and then scores for each subsequent category polled. From here, you
+                        will know what you’re doing right and areas for improvement. These
+                        are yours to keep.
+                    </div>
+                </div>
+            </article>
+            <article className="impact-point-container-b">
+                <img className="impact-circle-img" src="https://res.cloudinary.com/wescloud/image/upload/v1663698810/Culture%20All/F66D6B9B-C672-4C1B-AEE1-E19BBFBCC058_copy_kk6ayc.jpg" />
+                <div className="impact-point-box">
+                    <p className="impact-point">
+                        Utilize Data To Improve Environment
+                    </p>
+                    <div className="about-impact-point">
+                        Next, we can compare the feedback from your employees with our data
+                        sets on proven ways to improve company culture so you have a jumping
+                        off point.
+                    </div>
+                </div>
+            </article>
+
+            <article className="impact-point-container-a">
+                <img className="impact-circle-img" src="https://res.cloudinary.com/wescloud/image/upload/v1663699873/Culture%20All/FB9E9CD4-1A7E-49B4-8C90-35DE41486FA1_2_ziflpa.jpg" />
+                <div className="impact-point-box">
+                    <p className="impact-point" id="customize">
+                        Customize Your Action Plan
+                    </p>
+                    <div className="about-impact-point">
+                        We take it to the next level. We remove the guess work and hours of
+                        research by creating an action plan customized to your companies
+                        priorities and budge. Using your company’s scores gathered from each
+                        category, we help you to target the pain points you believe you can
+                        create the most impact in and we give you the tools to tackle them.
+                    </div>
+                </div>
+            </article>
+
+            <article className="impact-point-container-b">
+                <img className="impact-circle-img" src="https://res.cloudinary.com/wescloud/image/upload/v1663700276/Culture%20All/2ACF7CA1-652D-451E-87BE-CD4FBAB22680_2_borkor.jpg" />
+                <div className="impact-point-box">
+                    <p className="impact-point">
+                        Connect You With Resources
+                    </p>
+
+                    <div className="about-impact-point">
+                        We connect you with our hand selected partners for help with employee
+                        wellness and job perks like HR consultants, leadership coaches, Lunch
+                        and Learn options, therapy programs, virtual yoga sessions, gym services
+                        and benefits providers that partner with businesses.
+                    </div>
+                </div>
+            </article>
+
+            <div className="impact-home-box">
+                <button type="submit"
+                    onClick={() => {
+                        navigate(`/home`)
+                    }}
+                    className="impact-home-buttonz">Home
+                </button>
             </div>
-            <div className="panel-block">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?
-            </div>
-            <p className="panel-heading">
-                Customizable Action Plan Stuff
-            </p>
-            
-            <div className="panel-block">
-                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
-            </div>
-            <p className="panel-heading">
-                Resource Connection Stuff
-            </p>
-            
-            <div className="panel-block">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </div>
-        </article>
-        <button type="submit"
-            onClick={() => {
-                navigate(`/home`)
-            }}
-            className="button is-success">Home
-        </button>
-    </section>
+        </section>
+    </>
 
 }
