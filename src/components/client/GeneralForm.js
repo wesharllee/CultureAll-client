@@ -46,6 +46,12 @@ export const GeneralForm = () => {
         setIsShown(false)
     }
 
+    // const questionAnswered = (question) => {
+    //     if(question.id = 1 && question.answers.length === 0) {
+    //         return window.alert("please ensure all fields are selected")
+
+    //     }
+    // }
 
     return <section className="general-form-outer-container">
 

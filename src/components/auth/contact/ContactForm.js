@@ -8,6 +8,7 @@ import "../css/contact.css"
 export const ContactForm = () => {
     const [request, setRequest] = useState({})
     const navigate = useNavigate()
+    const [isUnsuccessful, setIsUnsuccessful] = useState(false)
 
 
     const handleChange = (evt) => {
@@ -19,16 +20,39 @@ export const ContactForm = () => {
     const handleSubmit = (evt) => {
         evt.preventDefault()
 
-        const requestData = {...request}
+        const requestData = { ...request }
+        if (
+            (requestData.first_name.length > 0) &&
+            (requestData.last_name.length > 0) &&
+            (requestData.email.length > 0) &&
+            (requestData.phone_number.length > 0) &&
+            (requestData.reason.length > 0) &&
+            (requestData.contact_by_phone.length > 0)) {
 
-        createContactRequest(requestData).then(() => {navigate('/contactus/confirmation')})
-    } 
+            createContactRequest(requestData).then(() => { navigate('/contactus/confirmation') })
+        }
+        else {
+            setIsUnsuccessful(true)
+            // alert("Please Fill Out All Fields")
+        }
+
+    }
+
+    // const fieldsComplete = (request) => {
+    //     request.first_name.length > 0 &&
+    //     request.last_name.length > 0 &&
+    //     request.email.length > 0 &&
+    //     request.phone_number.length > 0 &&
+    //     request.reason.length > 0 &&
+    //     request.contact_by_phone.length > 0 
+    //     ? 
+    // }
 
     return (
         <section className="section">
             <div className="contact-background">
-            <article className="contact-form-container">
-            <div className="contact-title">Contact Us</div>
+                <article className="contact-form-container">
+                    <div className="contact-title">Contact Us</div>
                     <form style={{ width: "100%" }}>
                         <div className="field">
                             <label htmlFor="first_name" className="label">First Name: </label>
@@ -101,17 +125,20 @@ export const ContactForm = () => {
                                 </div>
                             </div>
                         </div>
-                        
-                            <div className="contact-button-box">
-                                <button type="submit"
-                                    onClick={handleSubmit}
-                                    className="contact-buttonz">
-                                    Reach Out
-                                </button>
-                            </div>
-                        
+
+                        <div className="contact-button-box">
+                            <button type="submit"
+                                onClick={handleSubmit}
+                                className="contact-buttonz">
+                                Reach Out
+                            </button>
+                        </div>
+                        {
+                            isUnsuccessful ? <p className="help is-danger">Username or password not valid</p> : ''
+                        }
+
                     </form>
-            </article>
+                </article>
             </div>
         </section>
     )

@@ -26,7 +26,7 @@ export const Login = ({ setToken, setUserId }) => {
     }
 
     const matchUsers = (userId, cultUsers) => {
-      for(let cultUser of cultUsers) {
+      for (let cultUser of cultUsers) {
         if (cultUser.user.id === userId) {
           return cultUser.id
         }
@@ -51,37 +51,39 @@ export const Login = ({ setToken, setUserId }) => {
   }
 
   return (
-    <section className="login-form-container">
-      <form className="column is-two-thirds" onSubmit={handleLogin}>
-        {/* <h1 className="title">Culture All</h1> */}
-        <p className="subtitle">Please sign in</p>
+    <section className="login-outer-container">
+      <article className="login-form-container">
+        <form className="column is-two-thirds" onSubmit={handleLogin}>
+          {/* <h1 className="title">Culture All</h1> */}
+          <p className="subtitle">Please sign in</p>
 
-        <div className="field">
-          <label className="label">Username</label>
-          <div className="control">
-            <input className="input" type="text" ref={username} />
+          <div className="field">
+            <label className="label">Username</label>
+            <div className="control">
+              <input className="input" type="text" ref={username} />
+            </div>
           </div>
-        </div>
 
-        <div className="field">
-          <label className="label">Password</label>
-          <div className="control">
-            <input className="input" type="password" ref={password} />
+          <div className="field">
+            <label className="label">Password</label>
+            <div className="control">
+              <input className="input" type="password" ref={password} />
+            </div>
           </div>
-        </div>
 
-        <div className="login-form-button-box">
-          <div className="control">
-            <button className="login-form-login-buttonz" type="submit" >Submit</button>
+          <div className="login-form-button-box">
+            <div className="control">
+              <button className="login-form-login-buttonz" type="submit" >Submit</button>
+            </div>
+            <button className="register-form-register-buttonz" onClick={() => {
+              navigate(`/register`)
+            }} type="submit">Cancel</button>
           </div>
-          <button className="register-form-register-buttonz" onClick={() => {
-                            navigate(`/register`)
-                        }} type="submit">Cancel</button>
-        </div>
-        {
-          isUnsuccessful ? <p className="help is-danger">Username or password not valid</p> : ''
-        }
-      </form>
+          {
+            isUnsuccessful ? <p className="help is-danger">Username or password not valid</p> : ''
+          }
+        </form>
+      </article>
     </section>
   )
 }

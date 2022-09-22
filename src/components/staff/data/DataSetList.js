@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { getAllUsers } from "../../../managers/UserManager"
+import "../css/data.css"
 
 export const DataSetList = () => {
 
@@ -54,51 +55,60 @@ export const DataSetList = () => {
     }
 
     let getPercentage = (avg) => {
-        return avg/5 * 100
+        return avg / 5 * 100
     }
 
     return <section className="section">
-        <article className="panel is-info">
-            <p className="panel-heading">
-                Data Sets:
-            </p>
-            {cultUsers.map((cultUser) => {
+        <p className="data-list-title1">
+            Data Sets:
+        </p>
+        <article className="data-list-outer-container">
+
+            {cultUsers.reverse().map((cultUser) => {
                 let fullName = cultUser.user.first_name + " " + cultUser.user.last_name
                 let company = cultUser.company_name
                 let phoneNumber = cultUser.phone_number
                 let email = cultUser.user.email
                 let questionTypes = cultUser.question_types
-            
-                
+
+
                 if (cultUser.user.is_staff === false) {
-                    return <>
-                        <div>
-                            Company: {company}, Contact: {fullName}
+                    return <div className="data-list-container-1">
+                        <div className="data-list-container-c">
+                            <div className="data-list-title2">
+                                Company: {company}
+                            </div>
+                            <div className="data-list-title3">
+                                Contact: {fullName}
+                            </div>
                             <div>
                                 {questionTypes.map((questionType) => {
                                     let type = questionType.type
                                     let avg = getQuestionTypeAverages(questionType)
                                     let percentage = Math.round(getPercentage(avg))
-                                    return <div>
+                                    return <><div className="data-list-title3">
                                         Data Set: {type}
+                                    </div>
+
                                         <div>
                                             Score: {avg.toFixed(2)}
                                         </div>
                                         <div>
                                             Happiness Quotient: {percentage}%
                                         </div>
-                                    </div>
+                                    </>
                                 })}
                             </div>
+
+                            <div>
+                                Email: {email}
+                            </div>
+                            <div>
+                                Phone: {phoneNumber}
+                            </div>
+                            <Link to={`/datadetails/${cultUser.id}`} className="data-list-link">{company} Details</Link>
                         </div>
-                        <div>
-                            Email: {email}
-                        </div>
-                        <div>
-                            Phone: {phoneNumber}
-                        </div>
-                        <Link to={`/datadetails/${cultUser.id}`} className="navbar-item">{company} Details</Link>
-                    </>
+                    </div>
                 }
             })}
         </article>

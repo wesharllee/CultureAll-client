@@ -26,13 +26,13 @@ export const Dashboard = () => {
                     <div className="dash-link-container">
                         <div className="dash-title2">{company}'s Dashboard</div>
                         <div className="dash-linkz">
-                            <Link to={`/mydata/${userId}`} className="impact-link">{company}'s Data</Link>
+                            <Link to={`/mydata/${userId}`} className="dash-title3">{company}'s Data</Link>
                         </div>
                         <div className="dash-linkz">
-                            <Link to={`/getdata/${userId}`} className="impact-link">Get Data</Link>
+                            <Link to={`/getdata/${userId}`} className="dash-title3">Get Data</Link>
                         </div>
                         <div className="dash-linkz">
-                            <Link to={`/consultation/${userId}`} className="impact-link">Book Consultation</Link>
+                            <Link to={`/consultation/${userId}`} className="dash-title3">Book Consultation</Link>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,257 @@
+.contact-list-outer-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content:  space-evenly;
+    /* border: 1px solid black; */
+}
+
+.contact-list-container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    /* font-size: 85px; */
+    justify-content: center;
+    align-items: left;
+    border-radius: .25rem;
+    /* width: 45%; */
+}
+
+.contact-list-title1 {
+    font-size: 55px;
+}
+
+.contact-list-title2-a {
+    font-size: 35px;
+    padding-left: .5rem;
+    background-color: rgb(146, 174, 189);
+    border-radius: 5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    max-width: 800px;
+}
+
+.contact-list-title2-b {
+    font-size: 35px;
+    padding-left: .5rem;
+    border: 1px solid rgb(146, 174, 189);
+    border-radius: 5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    max-width: 800px;
+}
+
+.contact-list-title3 {
+    font-size: 25px;
+}
+
+.contact-list-form-container-a {
+    /* width: 40%; */
+    background-color: whitesmoke;
+    border: 1px solid rgb(146, 174, 189);
+    padding: 1rem;
+    margin: .5rem;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    text-align: left;
+    align-items: left;
+    justify-content: center;
+    opacity: 98%;
+    border-radius: 1rem;
+    /* max-width: 800px; */
+    /* box-shadow: 3px 3px wheat; */
+}
+
+.contact-list-form-container-b {
+    /* width: 70%; */
+    background-color:  rgb(146, 174, 189);;
+    padding: 1rem;
+    margin: .5rem;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    text-align: left;
+    align-items: left;
+    justify-content: center;
+    opacity: 98%;
+    border-radius: 1rem;
+    /* max-width: 800px; */
+    /* box-shadow: 3px 3px wheat; */
+}
+
+.contact-list-confirm-container {
+    /* width: 70%; */
+    background-color: rgb(211, 197, 172);
+    padding: 5rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    margin-top: 10rem;
+    margin-bottom: 5rem;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-items: center;
+    justify-content: center;
+    opacity: 98%;
+    border-radius: 1rem;
+    /* box-shadow: 3px 3px wheat; */
+}
+
+.contact-list-button-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    border-radius: .25rem;
+    /* min-height: 300px; */
+}
+
+.contact-list-bottom-button-box {
+    margin-bottom: 5rem;
+}
+
+.contact-list-complete-buttonz {
+    background: #fff;
+    border-color: #fff;
+    border-style: solid;
+    border-radius: .25rem;
+    background-color: whitesmoke;
+    color: rgb(81, 98, 106);
+    padding-left: 1.5rem; 
+    padding-right: 1.5rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    font-size: large;
+    /* border-radius: 1rem; */
+    border-color: rgb(146, 174, 189);
+    box-shadow: 0px 0px 0px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all .5s;
+}
+
+.contact-list-complete-buttonz:before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    /* background: wheat; */
+    /* color: aliceblue; */
+    transition: all .5s;
+    z-index: -1;
+}
+
+
+.contact-list-complete-buttonz:hover {
+    color: whitesmoke;
+    background: rgb(146, 174, 189);
+}
+
+.contact-list-complete-buttonz:hover:before {
+    top: 0;
+    left: 0;
+}
+
+.contact-list-unarchive-buttonz {
+    /* margin-bottom: 4rem; */
+    background: #fff;
+    border-color: #fff;
+    border-style: solid;
+    border-radius: .25rem;
+    background-color: rgb(146, 174, 189);
+    color: whitesmoke;
+    padding-left: 1.25rem; 
+    padding-right: 1.25rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    font-size: large;
+    /* border-radius: 1rem; */
+    border-color: whitesmoke;
+    box-shadow: 0px 0px 0px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all .5s;
+}
+
+.consult-list-unarchive-buttonz:before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    /* background: wheat; */
+    /* color: aliceblue; */
+    transition: all .5s;
+    z-index: -1;
+}
+
+
+.consult-list-unarchive-buttonz:hover {
+    background: whitesmoke;
+    color: rgb(81, 98, 106);
+}
+
+.consult-list-unarchive-buttonz:hover:before {
+    top: 0;
+    left: 0;
+}
+
+.consult-list-delete-buttonz {
+    margin-left: 2rem;
+    background: #fff;
+    border-color: #fff;
+    border-style: solid;
+    border-radius: .25rem;
+    background-color: rgb(146, 174, 189);
+    color: whitesmoke;
+    padding-left: 2rem; 
+    padding-right: 2rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
+    font-size: large;
+    /* border-radius: 1rem; */
+    border-color: whitesmoke;
+    box-shadow: 0px 0px 0px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all .5s;
+}
+
+.consult-list-delete-buttonz:before {
+    width: 100%;
+    height: 100%;
+    content: '';
+    margin: auto;
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    /* background: wheat; */
+    /* color: aliceblue; */
+    transition: all .5s;
+    z-index: -1;
+}
+
+
+.consult-list-delete-buttonz:hover {
+    background: whitesmoke;
+    color: rgb(81, 98, 106);
+}
+
+.consult-list-delete-buttonz:hover:before {
+    top: 0;
+    left: 0;
+}

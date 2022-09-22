@@ -41,7 +41,7 @@ export const NavBar = ({ isStaff, token, setToken }) => {
   return (
     <nav className="navbar is-light" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item" href="/">
+        <a className="navbar-item" href="/home">
           <img src={Logo} height="3rem" alt="Logo" /> <h1 className="title is-4">Culture All</h1>
         </a>
 
@@ -61,27 +61,27 @@ export const NavBar = ({ isStaff, token, setToken }) => {
                   {
                     isStaff
                     ?<>
-                    <Link to="/users" className="navbar-item">users</Link>
-                    <Link to={`/dashboard/${cultUser.id}`} className="navbar-item">dashboard</Link>
-                    <Link to={`/consultations/${cultUser.id}`} className="navbar-item">consultations</Link>
-                    <Link to={`/contacts/${cultUser.id}`} className="navbar-item">contacts</Link>
-                    <Link to={`/datasets/${cultUser.id}`} className="navbar-item">data</Link>
+                    {/* <Link to="/users" className="navbar-item">users</Link> */}
+                    <Link to={`/dashboard/${cultUser.id}`} className="nav-link-buttonz">dashboard</Link>
+                    <Link to={`/consultations/${cultUser.id}`} className="nav-link-buttonz">consultations</Link>
+                    <Link to={`/contacts/${cultUser.id}`} className="nav-link-buttonz">contacts</Link>
+                    <Link to={`/datasets/${cultUser.id}`} className="nav-link-buttonz">data</Link>
                     </>
                     : <>
-                    <Link to={`/dashboard/${cultUser.id}`} className="navbar-item">dashboard</Link>
-                    <Link to={`/mydata/${cultUser.id}`} className="navbar-item">my data</Link>
-                    <Link to={`/getdata/${cultUser.id}`} className="navbar-item">get data</Link>
-                    <Link to={`/consultation/${cultUser.id}`} className="navbar-item">consultation</Link>
-                    <Link to={"/home"} className="navbar-item">home</Link>
+                    <Link to={`/dashboard/${cultUser.id}`} className="nav-link-buttonz">dashboard</Link>
+                    <Link to={`/mydata/${cultUser.id}`} className="nav-link-buttonz">my data</Link>
+                    <Link to={`/getdata/${cultUser.id}`} className="nav-link-buttonz">get data</Link>
+                    <Link to={`/consultation/${cultUser.id}`} className="nav-link-buttonz">consultation</Link>
+                    <Link to={"/home"} className="nav-link-buttonz">home</Link>
                     
                     </>
                   }     
               </>
               : <>
-                  <Link to={"/home"} className="navbar-item">home</Link>
-                  <Link to={"/us"} className="navbar-item">about us</Link>
-                  <Link to={"/impact"} className="navbar-item">impact</Link>
-                  <Link to={"/contactus"} className="navbar-item">contact us</Link>
+                  <Link to={"/home"} className="nav-link-buttonz">home</Link>
+                  <Link to={"/us"} className="nav-link-buttonz">about us</Link>
+                  <Link to={"/impact"} className="nav-link-buttonz">impact</Link>
+                  <Link to={"/contactus"} className="nav-link-buttonz">contact us</Link>
                 </>
           }
         </div>

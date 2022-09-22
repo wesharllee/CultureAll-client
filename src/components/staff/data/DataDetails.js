@@ -75,51 +75,65 @@ export const DataDetails = () => {
         return avgAnswer
     }
 
-    
-    return <section className="section">
-        <article className="panel is-info">
-            <p className="panel-heading">
-                Data Details:
-            </p>
+    let getPercentage = (avg) => {
+        return avg / 5 * 100
+    }
 
-            <div>
-                {cultUser?.company_name} Data
-                <div>
-                    {cultUser.question_types?.map((questionType) => {
-                        let type = questionType.type
-                        let questions = questionType.questions
-                        let questionTypeAverage = getQuestionTypeAverages(questionType)
-                        return <div>
-                            Data Set: {type} || Average Score: {questionTypeAverage % 1 != 0 ? questionTypeAverage.toFixed(2) : questionTypeAverage}
-                            {questions.map((question) => {
-                                let text = question.question_text
-                                let answers = question.answers
-                                let questionAnswerAverage = getQuestionAnswerAverages(question)
-                                return <>
-                                    <div>
-                                        Question: {text}
-                                    </div>
-                                            <div>
-                                                Average Answer: {questionAnswerAverage % 1 != 0 ? questionAnswerAverage.toFixed(2) : questionAnswerAverage}
-                                            </div>
-                                            <div>
-                                                Total Answers: {answers.length}
-                                            </div>
-                                            
-                                    
-                                </>
-                            })}
+    return <section className="section">
+        <p className="data-list-title1">
+            {cultUser.company_name} Details:
+        </p>
+        <article className="data-list-outer-container">
+
+
+            <div className="data-list-container-2">
+                {cultUser.question_types?.map((questionType) => {
+                    let type = questionType.type
+                    let questions = questionType.questions
+                    let questionTypeAverage = getQuestionTypeAverages(questionType)
+                    return <div className="data-list-container-b">
+                        <div className="data-list-title2">
+                            Data Set: {type}
                         </div>
-                    })}
-                </div>
+                        <div className="data-list-title3">
+                            Average Score: {questionTypeAverage % 1 != 0 ? questionTypeAverage.toFixed(2) : questionTypeAverage}
+                        </div>
+                        <div className="data-list-title4">
+                            Average Percentage: {Math.round(getPercentage(questionTypeAverage % 1 != 0 ? questionTypeAverage.toFixed(2) : questionTypeAverage))}%
+                        </div>
+                        {questions.map((question) => {
+                            let text = question.question_text
+                            let answers = question.answers
+                            let questionAnswerAverage = getQuestionAnswerAverages(question)
+                            return <>
+                                <div className="data-list-question">
+                                    Question: {text}
+                                </div>
+                                <div>
+                                    Total Answers: {answers.length}
+                                </div>
+                                <div>
+                                    Average Answer Score: {questionAnswerAverage % 1 != 0 ? questionAnswerAverage.toFixed(2) : questionAnswerAverage}
+                                </div>
+                                <div>
+                                    Average Answer Percentage: {Math.round(getPercentage(questionAnswerAverage % 1 != 0 ? questionAnswerAverage.toFixed(2) : questionAnswerAverage))}
+                                </div>
+
+
+                            </>
+                        })}
+                    </div>
+                })}
+            </div>
+            <div className="data-list-button-box">
+                <button type="edit"
+                    onClick={() => {
+                        navigate(`/datasets/${userId}`)
+                    }}
+                    className="data-list-buttonz">Back
+                </button>
             </div>
 
-            <button type="edit"
-                onClick={() => {
-                    navigate(`/datasets/${userId}`)
-                }}
-                className="button is-success">Back
-            </button>
 
 
         </article>
